@@ -5,10 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './view/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './view/register/register.component';
+import { CardComponent } from './view/card/card.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

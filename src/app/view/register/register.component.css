@@ -23,6 +23,11 @@ body {
     
 }
 
+a {
+    color: #0366d6; /* Color del texto del enlace */
+    text-decoration: underline; /* Subrayado para indicar que es un enlace */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el enlace */
+  }
   
 
 p {
@@ -30,8 +35,8 @@ p {
     text-align: center;
   }
 
-.router{
-    margin: 65px;
+  .router{
+    margin: auto;
     color: #1B3C73; 
 }
   
@@ -42,7 +47,7 @@ p {
     font-family: Arial, sans-serif; 
     font-weight: bold;
     text-align: center; 
-    margin: 30px;
+    margin: 10px;
 }
 
 
@@ -53,23 +58,21 @@ p {
 }
 
 .form-group {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     width: 20vw;
 }
 
-.icono {
-    display: block; 
-    margin: 20px auto; 
-}
+
 
 
 label {
     display: block;
-    margin-bottom: 15px;
 }
 
-input[type="email"],
+input[type="text"],
 input[type="password"],
+input[type="email"],
+input[type="number"],
 select {
     width: 430px;
     padding: 10px;
@@ -88,8 +91,7 @@ button {
     color: #fff; 
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 button:hover {

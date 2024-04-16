@@ -1,0 +1,106 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container {
+  background-color: #F1F7FF; 
+  width: 450px; 
+  height: 600px;
+  color: #1B3C73;
+  margin: auto; 
+  padding: 20px; 
+  border-radius: 10px; 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  font-family: Arial, sans-serif;
+  
+}
+
+.icono {
+  display: block; 
+  margin: 20px auto; 
+}
+
+
+a {
+  color: #0366d6; 
+  text-decoration: underline; 
+  cursor: pointer; 
+}
+
+
+p {
+  color: #1B3C73; 
+  text-align: center;
+}
+
+
+.header-title {
+  color: #1B3C73; 
+  font-size: 24px; 
+  font-family: Arial, sans-serif; 
+  font-weight: bold;
+  text-align: center; 
+  margin-bottom: 30px;
+}
+
+
+
+.form {
+  padding: 0;
+  margin: 0;
+}
+
+.form-group {
+  margin-bottom: 30px;
+  width: 20vw;
+}
+
+
+.form-group-cvv {
+  margin-bottom: 30px;
+  width: 40px;
+}
+
+label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+select {
+  width: 430px;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  outline: none;
+}
+
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #1B3C73; 
+  color: #fff; 
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+}
+
+button:hover {
+  background-color: #1B3C73;
+}
+
+
