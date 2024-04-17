@@ -13,6 +13,7 @@ export class LoginComponent {
 
   }
 
+  correo: string = '';
   Identificador: string = '';
   Contrasena: string = '';
 

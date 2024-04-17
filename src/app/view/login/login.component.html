@@ -6,12 +6,12 @@
       <div class="form-group">
         <label for="correo">Correo electónico:</label>
         <input type="email" id="correo" name="correo" (input)="actualizarIdentificador($event)" [value]="Identificador"
-          required />
+          required/>
       </div>
       <div class="form-group">
         <label for="contraseña">Contraseña:</label>
         <input type="password" id="contraseña" name="contraseña" (input)="actualizarContrasena($event)"
-          [value]="Contrasena" required />
+          [value]="Contrasena" required/>
       </div>
       <p>¿Olvidó su contraseña? Recuperar contraseña</p>
       <button (click)="iniciarSesion()">Iniciar sesión</button>
