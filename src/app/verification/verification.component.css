@@ -5,9 +5,9 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-}
-
-.container {
+  }
+  
+  .container {
     background-color: #F1F7FF; 
     width: 450px; 
     height: 600px;
@@ -21,65 +21,74 @@ body {
     transform: translate(-50%, -50%); 
     font-family: Arial, sans-serif;
     
-}
-
+  }
   
-
-p {
+  .icono {
+    display: block; 
+    margin: 20px auto; 
+  }
+  
+  
+  a {
+    color: #0366d6; 
+    text-decoration: underline; 
+    cursor: pointer; 
+  }
+  
+  
+  p {
     color: #1B3C73; 
     text-align: center;
+    margin: 60px;
   }
-
-.router{
-    margin: 65px;
-    color: #1B3C73; 
-}
   
-
-.header-title {
+  
+  .header-title {
     color: #1B3C73; 
     font-size: 24px; 
     font-family: Arial, sans-serif; 
     font-weight: bold;
     text-align: center; 
-    margin: 30px;
-}
-
-
-
-.form {
+    margin-bottom: 30px;
+  }
+  
+  
+  
+  .form {
     padding: 0;
     margin: 0;
-}
-
-.form-group {
+  }
+  
+  .form-group {
     margin-bottom: 30px;
     width: 20vw;
-}
-
-.icono {
-    display: block; 
-    margin: 20px auto; 
-}
-
-
-label {
+  }
+  
+  
+  .form-group-cvv {
+    margin-bottom: 30px;
+    width: 40px;
+  }
+  
+  label {
     display: block;
     margin-bottom: 15px;
-}
-
-input[type="email"],
-input[type="password"],
-select {
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="number"],
+  select {
     width: 430px;
     padding: 10px;
     border: 1px solid #ffffff;
     border-radius: 10px;
     outline: none;
-}
-
-
-button {
+  }
+  
+  
+  button {
     width: 100%;
     padding: 10px;
     border: none;
@@ -88,12 +97,12 @@ button {
     color: #fff; 
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-button:hover {
+  
+  }
+  
+  button:hover {
     background-color: #1B3C73;
-}
-
-
+  }
+  
+  
+  

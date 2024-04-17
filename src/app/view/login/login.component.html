@@ -1,24 +1,22 @@
-
 <body>
-    <div class="container">
-        <div class="form">
-            <h1>Iniciar sesión</h1>
-                <div class="imagen">
-                    <img
-                      src=".\assets\images\login.png"
-                      alt="login"
-                    />
-                  </div>
-                <div class="form-group">
-                  <label for="correo">Correo electónico:</label>
-                  <input type="text" id="correo" name="correo" (input)="actualizarIdentificador($event)" [value]="Identificador" required />
-                </div>
-                <div class="form-group">
-                  <label for="contraseña">Contraseña:</label>
-                  <input type="text" id="contraseña" name="contraseña" (input)="actualizarContrasena($event)" [value]="Contrasena" required />
-                </div>
-                <button (click)="iniciarSesion()">Iniciar sesión</button>
-                <p>¿Olvidó su contraseña? Recuperar contraseña</p>
-        </div>
+  <div class="container">
+    <div class="header-title">Iniciar Sesion</div>
+    <img src=".\assets\images\icono5.png" alt="icono" class="icono"/>
+    <div class="form">
+      <div class="form-group">
+        <label for="correo">Correo electónico:</label>
+        <input type="email" id="correo" name="correo" (input)="actualizarIdentificador($event)" [value]="Identificador"
+          required/>
+      </div>
+      <div class="form-group">
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" name="contraseña" (input)="actualizarContrasena($event)"
+          [value]="Contrasena" required/>
+      </div>
+      <p>¿Olvidó su contraseña? Recuperar contraseña</p>
+      <button (click)="iniciarSesion()">Iniciar sesión</button>
+      
+      <a routerLink="/register" class="router"> ¿Aun no estas registrado? Registrate aqui</a>
     </div>
+  </div>
 </body>

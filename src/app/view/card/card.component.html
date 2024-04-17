@@ -1,0 +1,28 @@
+
+<body>
+  <div class="container">
+    <div class="header-title">Informacion de pago</div>
+    <img src=".\assets\images\card1.png" alt="icono" class="icono"/>
+      <div class="form">
+              <div class="form-group">
+                <label for="nombre">Nombre del titular:</label>
+                <input type="text" id="nombre" name="nombre"  required/>
+              </div>
+              <div class="form-group">
+                <label for="apellidos">Numero de tarjeta:</label>
+                <input type="text" id="apellidos" name="apellidos"  required/>
+              </div>
+              <div class="form-group">
+                <label for="edad">Fecha de vencimiento:</label>
+                <input type="number" id="edad" name="edad"  required/>
+              </div>
+              <div class="form-group-cvv">
+                <label for="telefono">cvv:</label>
+                <input type="number" id="telefono" name="telefono"  required/>
+              </div>
+              <button type="button" (click)="redireccionar()">Registrarse</button>
+      </div>
+  </div>
+</body>
+
+
