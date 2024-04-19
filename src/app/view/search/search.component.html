@@ -1,0 +1,33 @@
+<section>
+    <div class="background">
+        <img src="assets/avion.jpg" alt="">
+    </div>
+    <div class="container">
+        <h2>Buscar vuelo</h2>
+        <div class="inputs">
+            <input type="text" class="mainInput" placeholder="Origen">
+            <input type="text" class="mainInput" placeholder="Destino">
+            <button>Buscar</button>
+        </div>
+        <div class="filters">
+            <input type="datetime-local" class="filterInput" placeholder="Fecha">
+            <input type="text" class="filterInput" placeholder="Filtrar por: Precio">
+            <div class="second">
+                <label for="asc">Asc.</label>
+                <input type="radio" name="order" id="asc" class="price">
+                <label for="desc">Desc.</label>
+                <input type="radio" name="order" id="desc" class="price">
+            </div>
+            <div class="second">
+                <input type="checkbox" name="direct-flight" id="direct-flight" class="direct-flight">
+                <label for="direct-flight">Vuelo directo</label>
+            </div>
+        </div>
+        <div class="boxes">
+            <div class="mapContainer"></div>
+            <div class="resultContainer">
+                <img src="assets/viajar.png" alt="avion" class="icon">
+            </div>
+        </div>
+    </div>
+</section>
