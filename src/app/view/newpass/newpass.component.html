@@ -1,0 +1,20 @@
+<body>
+    <div class="container">
+        <div class="form">
+            <h2>Recuperar contraseña</h2>
+                <div class="imagen">
+                    <img
+                      src=".\assets\images\login.png"
+                      alt="login"
+                    />
+                  </div>
+                  <p>Para restablecer el acceso, ingrese su correo electrónico</p>
+                <div class="form-group">
+                  <label for="correo">Correo electrónico:</label>
+                  <input type="text" id="correo" name="correo" (input)="actualizarIdentificador($event)" [value]="Identificador.Destinatario" required placeholder="correo@ejemplo.com"/>
+                  <span *ngIf="!identificadorLleno" class="error-message">¡Por favor, introduce tu correo electrónico!</span>
+                </div>
+                <button (click)="enviarCorreo()" >Siguiente</button>
+            </div>
+    </div>
+</body>

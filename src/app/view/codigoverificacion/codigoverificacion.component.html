@@ -1,0 +1,31 @@
+<body>
+    <div class="container">
+        <div class="form">
+            <h2>Recuperar contraseña</h2>
+            <p>Se ha enviado a su bandeja de entrada.</p>
+                <div class="imagen">
+                    <img
+                      src=".\assets\images\mensaje.png"
+                      alt="login"
+                    />
+                  </div>
+                  <p>Ingrese el código de verificación a continuación</p>
+                <div class="form-group">
+                  <div class="password-input">
+                    <form  class="codigo-form">
+                        <input (input)="actualizarCodigo1($event)"  type="text" maxlength="1"  class="codigo-input" required>
+                        <input (input)="actualizarCodigo2($event)"  type="text" maxlength="1"  class="codigo-input" required>
+                        <input (input)="actualizarCodigo3($event)"  type="text" maxlength="1"  class="codigo-input" required>
+                        <input (input)="actualizarCodigo4($event)"  type="text" maxlength="1"  class="codigo-input" required>
+                        <input (input)="actualizarCodigo5($event)"  type="text" maxlength="1"  class="codigo-input" required>
+                        <input (input)="actualizarCodigo6($event)"  type="text" maxlength="1"  class="codigo-input" required>
+                    </form>
+                  </div>
+                </div>
+                <span *ngIf="activar" class="error-message">{{mensaje}}</span>
+
+                <p>¿No recibió su código? <a (click)="reenviarCorreo()">Enviar de nuevo</a></p>
+                <button (click)="confirmarCodigo()">Siguiente</button>
+        </div>
+    </div>
+</body>

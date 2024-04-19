@@ -1,70 +1,100 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
-h1{
-    padding: 0;
-    margin: 0 0 20px 0;
+h2 {
+  margin-top: 0;
+  text-align: center;
 }
-img{
-    width: 160px;
-    height: 160px;
-    margin-bottom: 10px;
+
+img {
+  width: 140px;
+  height: 140px;
+  margin-bottom: 15px;
+  border-radius: 180px;
 }
 .container {
-    background-color: #F1F7FF;
-    border-radius: 10px;
-    height: 65vh;
-    width: 40vw;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
-    color: #5D5C92;
-    padding: 3rem;
-    display: flex;
-    text-align: center;
-    margin: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  height: 75vh;
+  width: 20rem;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+  color: #5d5c92;
+  padding: 2rem 3rem;
+  display: flex;
+  margin: 40px;
+  align-items: center;
 }
 
 .form {
-    padding: 0;
-    margin: 0;
+  align-items: center;
+  width: 100%;
+  text-align: center;
 }
-
 .form-group {
-    margin-bottom: 20px;
-    width: 20vw;
+  margin-bottom: 10px;
+  text-align: left;
 }
 
 
-input{
-
+i {
+  position: relative;
+  top: -25px;
+  left: 270px;
+  cursor: pointer;
 }
 label {
-    display: block;
-    margin-bottom: 5px;
+  display: block;
+  margin-bottom: 5px;
 }
 
-input[type="text"],
-select {
-    width: 30vw;
-    padding: 10px;
-    border: 1px solid #ffffff;
-    border-radius: 10px;
-    outline: none;
+input {
+  width: 18rem;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  outline: none;
+  background-color: #f4f4f4;
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #5D5C92;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 10px 20px;
+  background-color: #5d5c92;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #5D5C92;
+  background-color: #8b8acb;
+}
+
+p {
+  font-size: 12px;
+  color: black;
+}
+
+a {
+  color: #5d5c92;
+}
+
+.error-message {
+  color: rgba(255, 0, 98, 0.482);
+  font-size: 0.8em;
+  position: relative;
+}
+
+.form-group.error {
+  input {
+    border: 1px solid rgba(255, 0, 98, 0.482);
+  }
+}
+.password-input span{
+    position: relative;
+    left: -20px;
 }
