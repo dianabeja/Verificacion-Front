@@ -1,0 +1,167 @@
+.header {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px; 
+}
+
+.logo-container {
+    flex-grow: 1; 
+}
+
+.logo {
+    max-width: 150px;
+    height: auto;
+}
+
+.auth-links {
+    display: flex;
+    align-items: center;
+}
+
+.auth-link {
+    margin: 0 10px; 
+    color: #5D5C92;
+    text-decoration: none;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+
+.flight-search {
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container h2 {
+    font-size: larger;
+    text-align: left;
+    margin-bottom: 20px; 
+    font-family: "Arial", sans-serif; 
+    color: #000000;
+}
+
+
+.search-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+.inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.main-input {
+    width: 45%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #5D5C92;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #8b8acb;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filter-input {
+    width: 45%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.sort-options,
+.direct-flight-option {
+    display: flex;
+    align-items: center;
+}
+
+.sort-options label,
+.direct-flight-option label {
+    margin-right: 10px;
+}
+
+
+.additional-sections {
+    padding: 20px ;
+}
+
+.additional-sections .container {
+    display: flex;
+    justify-content: space-between;
+    height: 20px;
+}
+
+.additional-section {
+    width: calc(50% - 20px);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.additional-section:not(:last-child) {
+    margin-right: 20px;
+}
+
+.popular-destinations {
+    padding: 40px 0;
+}
+
+.destination-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+    background-color: #E2DBED;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; 
+    border-radius: 10px;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card h3 {
+    margin-top: 10px;
+    text-align: center;
+}
+

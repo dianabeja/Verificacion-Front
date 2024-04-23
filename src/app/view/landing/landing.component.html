@@ -1,0 +1,67 @@
+<header class="header">
+    <div class="logo-container">
+        <img src="assets/images/Mexicana (3).png" alt="Aerolínea Mexicana" class="logo">
+    </div>
+    <div class="auth-links">
+        <a href="/register" class="auth-link">Registrarse</a>
+        <span>/</span>
+        <a href="/login" class="auth-link">Iniciar sesión</a>
+    </div>
+</header>
+<body>
+<section class="flight-search">
+    <div class="container">
+        <h2>Buscar vuelo</h2>
+        <form class="search-form">
+            <div class="inputs">
+                <input type="text" class="main-input" placeholder="Origen">
+                <input type="text" class="main-input" placeholder="Destino">
+                <button class="search-button">Buscar</button>
+            </div>
+            <div class="filters">
+                <input type="datetime-local" class="filter-input" placeholder="Fecha">
+                <input type="text" class="filter-input" placeholder="Filtrar por: Precio">
+                <div class="sort-options">
+                    <label for="asc">Asc.</label>
+                    <input type="radio" name="order" id="asc" class="price">
+                    <label for="desc">Desc.</label>
+                    <input type="radio" name="order" id="desc" class="price">
+                </div>
+                <div class="direct-flight-option">
+                    <input type="checkbox" name="direct-flight" id="direct-flight" class="direct-flight">
+                    <label for="direct-flight">Vuelo directo</label>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section class="additional-sections">
+    <div class="container">
+        <div class="additional-section"></div>
+        <div class="additional-section"></div>
+    </div>
+</section>
+
+<section class="popular-destinations">
+    <div class="container">
+        <h2>Destinos Populares</h2>
+        <div class="destination-cards">
+            <div class="card">
+                <img src="assets/images/cancun.jpg" alt="Nombre del destino 1">
+                <h3>Cancun</h3>
+            </div>
+            <div class="card">
+                <img src="assets/images/loscabos.jpg" alt="Nombre del destino 2">
+                <h3>Los cabos</h3>
+            </div>
+            <div class="card">
+                <img src="assets/images/puerto.jpg" alt="Nombre del destino 2">
+                <h3>Puerto vallarta</h3>
+            </div>
+        </div>
+    </div>
+</section>
+    
+</body>
+
