@@ -9,29 +9,38 @@ body {
 }
 
 h2 {
-    margin-top: 0px;
-    text-align: center;
+    margin-top: 0; /* Permite que el margen superior del h2 se ajuste automáticamente */
     margin-bottom: 40px;
+    text-align: center;
+    align-self: flex-start; /* Centra el h2 en la parte superior del contenedor */
 }
+
+
 
 .container {
     background-color: #fff;
     border-radius: 10px;
     height: 75vh;
-    width: 20rem;
+    width: 40rem;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
     color: #5D5C92;
     padding: 2rem 3rem;
     display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centra verticalmente el contenido */
+    flex-direction: row; 
+    justify-content: space-between; 
     align-items: center;
+    justify-content: center; 
+    align-items: center; 
 }
 
-.form {
-    width: 100%;
+.form,
+.form2 {
+    width: 45%;
     text-align: center;
+    margin-inline: 20px;
 }
+
+
 
 .form-group {
     text-align: left;
