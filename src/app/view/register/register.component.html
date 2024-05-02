@@ -35,7 +35,10 @@
                 <span *ngIf="!contrasenaLlena" class="error-message">¡Por favor, introduce tu contraseña!</span>
               </div>
 
+              <div *ngIf="loading" class="loader">Cargando...</div>
+
               <button type="button" (click)="registrarUsuario()">Registrarse</button>
+              
 
       </div>
       <div class="form2">
@@ -58,7 +61,7 @@
         </div>
         <div class="form-group">
           <label for="cvv">Cvv:</label>
-          <input type="number" id="cvv" name="cvv"/>
+          <input type="password" id="cvv" name="cvv"/>
         </div>
       </div>
   </div>

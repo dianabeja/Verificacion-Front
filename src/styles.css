@@ -1,2 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@fortawesome/fontawesome-free/css/all.css';
+
+/* Estilo básico para las notificaciones Toastr */
+
+.toast-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation-duration: 5s;
+  }
+  
+  .toast-success {
+    background-color: #5cb85c; /* Color de fondo para notificaciones de éxito */
+  }
+  
+  .toast-error {
+    background-color: #d9534f; /* Color de fondo para notificaciones de error */
+  }
+  
+  .toast-info {
+    background-color: #5bc0de; /* Color de fondo para notificaciones de información */
+  }
+  
+  .toast-warning {
+    background-color: #f0ad4e; /* Color de fondo para notificaciones de advertencia */
+  }
+
+ 

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { CorreoActivacionService } from 'src/app/service/correoActivacion.service';
 import { activarCuenta_Interface } from 'src/app/models/activarCuenta.model';
 import { activarCuentaService } from 'src/app/service/activarCuenta.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-code',
@@ -18,6 +19,7 @@ export class ActivarCuentaComponent {
     private cache: CacheService,
     private router: Router,
     private reenviarcorreo: CorreoActivacionService,
+    private toastr: ToastrService,
   ) { }
 
 
@@ -25,6 +27,8 @@ export class ActivarCuentaComponent {
   numero_activacion: any = [];
   mensaje: string = '';
   activar: boolean = false;
+  loading: boolean = false;
+
 
   Input: activarCuenta_Interface = {
     // identificador: '',
@@ -78,6 +82,7 @@ export class ActivarCuentaComponent {
   }
 
   async confirmarCodigo() {
+    this.loading = true;
     if (
       this.numero_activacion[0] &&
       this.numero_activacion[1] &&
@@ -108,6 +113,7 @@ export class ActivarCuentaComponent {
           this.router.navigate(['/login']);
           this.activar = false;
           console.log("creado")
+          this.toastr.success('Cuenta activada correctamente', 'Éxito');
   
         } else {
   
@@ -115,17 +121,21 @@ export class ActivarCuentaComponent {
           this.activar = true;
           console.log("error")
           window.alert("Error al activar la cuenta");
+          this.toastr.error('Error al activar la cuenta', 'Error');
         }
       } catch (error) {
         console.error(error);
         this.mensaje = "Error al activar la cuenta";
         this.activar = true;
+        this.toastr.error('Error al activar la cuenta', 'Error');
       }
   
+      this.loading = false;
     } else {
       this.mensaje = "Por favor complete todos los campos";
       console.log("Por favor complete todos los campos")
       this.activar = true;
+      this.loading = false;
     }
   }
   

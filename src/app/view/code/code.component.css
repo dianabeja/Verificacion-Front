@@ -20,13 +20,13 @@ img{
 .container {
     background-color: #fff;
     border-radius: 10px;
-    height: 75vh;
+    height: 70vh;
     width: 20rem;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
     color: #5D5C92;
     padding: 2rem 3rem;
     display: flex;
-    margin: 40px;
+    margin: 90px;
     align-items: center;
 }
 
@@ -83,6 +83,31 @@ a{
     cursor: pointer;
     color: #5D5C92;
 }
+
+.spinner-border {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: text-bottom;
+    border: 0.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border 0.75s linear infinite;
+  }
+  
+  @keyframes spinner-border {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @-webkit-keyframes spinner-border {
+    to {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+
 
 .error-message {
     color: rgba(255, 0, 98, 0.482);

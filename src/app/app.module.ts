@@ -10,6 +10,9 @@ import { CodigoverificacionComponent } from './view/codigoverificacion/codigover
 import { NuevacontrasenaComponent } from './view/nuevacontrasena/nuevacontrasena.component';
 import { RegisterComponent } from './view/register/register.component';
 import { ActivarCuentaComponent } from './view/code/code.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Importa BrowserAnimationsModule
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +27,8 @@ import { ActivarCuentaComponent } from './view/code/code.component';
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule,
+    BrowserAnimationsModule, // Agrega BrowserAnimationsModule a los imports
+    ToastrModule.forRoot() // Agrega ToastrModule.forRoot() a los imports
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -35,6 +35,8 @@ export class RegisterComponent {
   numerotarjetaLleno: boolean = true;
   fechavencimientoLleno: boolean = true;
   mostrarConfirmacion = false;
+  loading: boolean = false;
+
 
   register_object: register_interface = {
     identificador: '',
@@ -107,6 +109,7 @@ export class RegisterComponent {
   }
 
   async registrarUsuario() {
+    this.loading = true;
 
     if (!this.TarjetaTitular || !this.TarjetaDireccion || !this.NumeroTarjeta || !this.FechaVencimiento) {
       const confirmacion = window.confirm('¿Desea dejar los campos de la tarjeta vacíos?');
@@ -120,7 +123,11 @@ export class RegisterComponent {
         this.router.navigate(['/code'])
         console.log(a);
         this.cache.guardarDatoLocal('cuenta', this.register_object.identificador);
+        
       }
+      
+      this.loading = false;
+
     } else {
       // this.continuarRegistro();
 
@@ -131,6 +138,8 @@ export class RegisterComponent {
       this.router.navigate(['/code'])
       console.log(a);
       this.cache.guardarDatoLocal('cuenta', this.register_object.identificador);
+
+      this.loading = false;
 
 
     }

@@ -28,6 +28,8 @@
                 <!-- <span *ngIf="activar" class="error-message">{{mensaje}}</span> -->
 
                 <p>¿No recibió su código? <a (click)="reenviarCorreo()">Enviar de nuevo</a></p>
+                <div *ngIf="loading" class="loader">Cargando...</div>
+
                 <button (click)="confirmarCodigo()">Siguiente</button>
         </div>
     </div>
