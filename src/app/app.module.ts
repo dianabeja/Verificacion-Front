@@ -8,10 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { NewpassComponent } from './view/newpass/newpass.component';
 import { CodigoverificacionComponent } from './view/codigoverificacion/codigoverificacion.component';
 import { NuevacontrasenaComponent } from './view/nuevacontrasena/nuevacontrasena.component';
+import { RegisterComponent } from './view/register/register.component';
+import { ActivarCuentaComponent } from './view/code/code.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    RegisterComponent,
+    ActivarCuentaComponent,
     NewpassComponent,
     CodigoverificacionComponent,
     NuevacontrasenaComponent

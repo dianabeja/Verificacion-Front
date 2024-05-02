@@ -1,5 +1,5 @@
 <body>
-    <div class="container">
+  <div class="container">
         <div class="form">
             <h2>Verificar cuenta</h2>
             <p>Se ha enviado a su bandeja de entrada.</p>
@@ -19,12 +19,13 @@
                         <input (input)="actualizarCodigo4($event)"  type="text" maxlength="1"  class="codigo-input" required>
                         <input (input)="actualizarCodigo5($event)"  type="text" maxlength="1"  class="codigo-input" required>
                         <input (input)="actualizarCodigo6($event)"  type="text" maxlength="1"  class="codigo-input" required>
-                        <input (input)="actualizarCodigo6($event)"  type="text" maxlength="1"  class="codigo-input" required>
-                        <input (input)="actualizarCodigo6($event)"  type="text" maxlength="1"  class="codigo-input" required>
+                        <input (input)="actualizarCodigo7($event)"  type="text" maxlength="1"  class="codigo-input" required>
+                        <input (input)="actualizarCodigo8($event)"  type="text" maxlength="1"  class="codigo-input" required>
+                        <input (input)="actualizarCodigo9($event)"  type="text" maxlength="1"  class="codigo-input" required>
                     </form>
                   </div>
                 </div>
-                <span *ngIf="activar" class="error-message">{{mensaje}}</span>
+                <!-- <span *ngIf="activar" class="error-message">{{mensaje}}</span> -->
 
                 <p>¿No recibió su código? <a (click)="reenviarCorreo()">Enviar de nuevo</a></p>
                 <button (click)="confirmarCodigo()">Siguiente</button>
