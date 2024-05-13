@@ -38,26 +38,29 @@
               <div *ngIf="loading" class="loader">Cargando...</div>
 
               <button type="button" (click)="registrarUsuario()">Registrarse</button>
-              
 
+              <input type="checkbox" id="activarForm2" (change)="activarForm2($event)">
+
+
+              <label for="activarForm2">¿Agregar información bancaria?</label>
       </div>
       <div class="form2">
         <h6>Informacion bancaria (opcional)</h6>
         <div class="form-group">
           <label for="tarjetaTitular">Nombre del titular:</label>
-          <input type="text" id="tarjetaTitular" name="tarjetaTitular" (input)="actualizarTarjetaTitular($event)" [value]="TarjetaTitular"/>
+          <input type="text" id="tarjetaTitular" name="tarjetaTitular" [disabled]="!form2Habilitado" (input)="actualizarTarjetaTitular($event)" [value]="TarjetaTitular"/>
         </div>
         <div class="form-group">
           <label for="tarjetaDireccion">Direccion de facturacion:</label>
-          <input type="text" id="tarjetaDireccion" name="tarjetaDireccion" (input)="actualizarTarjetaDireccion($event)" [value]="TarjetaDireccion"/>
+          <input type="text" id="tarjetaDireccion" name="tarjetaDireccion" [disabled]="!form2Habilitado"(input)="actualizarTarjetaDireccion($event)" [value]="TarjetaDireccion"/>
         </div>
         <div class="form-group" >
           <label for="numeroTarjeta">Numero de tarjeta:</label>
-          <input type="text" id="numeroTarjeta" name="numeroTarjeta" (input)="actualizarNumeroTarjeta($event)" [value]="NumeroTarjeta"/>
+          <input type="text" id="numeroTarjeta" name="numeroTarjeta" [disabled]="!form2Habilitado"(input)="actualizarNumeroTarjeta($event)" [value]="NumeroTarjeta"/>
         </div>
         <div class="form-group" >
           <label for="fechaVencimiento">Fecha de vencimiento:</label>
-          <input type="text" id="fechaVencimiento" name="fechaVencimiento" (input)="actualizarFechaVencimiento($event)" [value]="FechaVencimiento"/>
+          <input type="text" id="fechaVencimiento" name="fechaVencimiento" [disabled]="!form2Habilitado"(input)="actualizarFechaVencimiento($event)" [value]="FechaVencimiento"/>
         </div>
         <div class="form-group">
           <label for="cvv">Cvv:</label>

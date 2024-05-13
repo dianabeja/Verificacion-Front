@@ -36,6 +36,7 @@ export class RegisterComponent {
   fechavencimientoLleno: boolean = true;
   mostrarConfirmacion = false;
   loading: boolean = false;
+  form2Habilitado: boolean = false;
 
 
   register_object: register_interface = {
@@ -49,6 +50,12 @@ export class RegisterComponent {
     usuario_Tarjeta_Numero_Tarjeta: '',
     usuario_Tarjeta_Fecha_Vencimiento: ''
   };
+
+  activarForm2(event: any): void {
+    this.form2Habilitado = event.target.checked;
+  }
+  
+  
 
   actualizarIdentificador(event: Event): void {
     this.Identificador = (event.target as HTMLInputElement).value;
