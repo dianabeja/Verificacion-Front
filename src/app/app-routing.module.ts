@@ -6,15 +6,17 @@ import { CodigoverificacionComponent } from './view/codigoverificacion/codigover
 import { NuevacontrasenaComponent } from './view/nuevacontrasena/nuevacontrasena.component';
 import { RegisterComponent } from './view/register/register.component';
 import { ActivarCuentaComponent } from './view/code/code.component';
+import { LandingComponent } from './view/landing/landing.component';
 
 const routes: Routes = [
   {path:"login", component: LoginComponent},
-  { path: '', component: LoginComponent },
+  { path: '', component: LandingComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'code', component: ActivarCuentaComponent },
   { path: 'newPass', component: NewpassComponent },
   { path: 'codVerificacion', component: CodigoverificacionComponent },
   { path: 'nuevaContrasena', component: NuevacontrasenaComponent },
+  { path: 'landing', component: LandingComponent },
 ];
 
 @NgModule({
