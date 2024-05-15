@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     BrowserModule,
     AppRoutingModule, 
+    CommonModule,
     HttpClientModule,
     BrowserAnimationsModule, // Agrega BrowserAnimationsModule a los imports
     ToastrModule.forRoot() // Agrega ToastrModule.forRoot() a los imports
