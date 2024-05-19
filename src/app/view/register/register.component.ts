@@ -54,8 +54,8 @@ export class RegisterComponent {
   activarForm2(event: any): void {
     this.form2Habilitado = event.target.checked;
   }
-  
-  
+
+
 
   actualizarIdentificador(event: Event): void {
     this.Identificador = (event.target as HTMLInputElement).value;
@@ -103,6 +103,16 @@ export class RegisterComponent {
     this.fechavencimientoLleno = this.FechaVencimiento.trim().length > 0;
   }
 
+  private validarNumeroTarjeta(numeroTarjeta: string): boolean {
+    const regex = /^[0-9]{16}$/; // Ejemplo para validar un número de tarjeta de 16 dígitos
+    return regex.test(numeroTarjeta);
+  }
+
+  private validarFechaVencimiento(fechaVencimiento: string): boolean {
+    const regex = /^(0[1-9]|1[0-2])-[0-9]{2}$/; // Ejemplo para MM-YY
+    return regex.test(fechaVencimiento);
+  }
+
   almacenarDatos() {
     this.register_object.identificador = this.Identificador;
     this.register_object.contraseña = this.Contrasena;
@@ -118,6 +128,31 @@ export class RegisterComponent {
   async registrarUsuario() {
     this.loading = true;
 
+    if (!this.Nombre || !this.Apellidos || !this.Edad || !this.Identificador || !this.Contrasena) {
+      alert('Por favor, complete los campos de Nombre, Apellidos, Edad, Identificador y Contraseña.');
+      this.loading = false;
+      return;
+    }
+
+    if (this.form2Habilitado) {
+      if (!this.TarjetaTitular || !this.TarjetaDireccion || !this.NumeroTarjeta || !this.FechaVencimiento) {
+        alert('Por favor, complete los campos de Nombre del titular, Direccion de facturacion, Numero de tarjeta y Fecha de vencimiento.');
+        this.loading = false;
+        return;
+      }
+
+      if (!this.validarNumeroTarjeta(this.NumeroTarjeta)) {
+        alert('Número de tarjeta inválido. Debe tener 16 dígitos numericos.');
+        this.loading = false;
+        return;
+      }
+      if (!this.validarFechaVencimiento(this.FechaVencimiento)) {
+        alert('Fecha de vencimiento inválida. Formato MM-YY.');
+        this.loading = false;
+        return;
+      }
+    }
+
     if (!this.TarjetaTitular || !this.TarjetaDireccion || !this.NumeroTarjeta || !this.FechaVencimiento) {
       const confirmacion = window.confirm('¿Desea dejar los campos de la tarjeta vacíos?');
       if (confirmacion) {
@@ -130,9 +165,9 @@ export class RegisterComponent {
         this.router.navigate(['/code'])
         console.log(a);
         this.cache.guardarDatoLocal('cuenta', this.register_object.identificador);
-        
+
       }
-      
+
       this.loading = false;
 
     } else {
