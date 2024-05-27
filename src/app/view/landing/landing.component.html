@@ -8,60 +8,115 @@
         <a href="/login" class="auth-link">Iniciar sesión</a>
     </div>
 </header>
+
 <body>
-<section class="flight-search">
-    <div class="container">
-        <h2>Buscar vuelo</h2>
-        <form class="search-form">
-            <div class="inputs">
-                <input type="text" class="main-input" placeholder="Origen">
-                <input type="text" class="main-input" placeholder="Destino">
-                <button class="search-button">Buscar</button>
-            </div>
-            <div class="filters">
-                <input type="datetime-local" class="filter-input" placeholder="Fecha">
-                <input type="text" class="filter-input" placeholder="Filtrar por: Precio">
-                <div class="sort-options">
-                    <label for="asc">Asc.</label>
-                    <input type="radio" name="order" id="asc" class="price">
-                    <label for="desc">Desc.</label>
-                    <input type="radio" name="order" id="desc" class="price">
+    <section class="flight-search">
+        <div class="container">
+            <h2>Buscar vuelo</h2>
+            <form class="search-form">
+                <div class="inputs">
+                    <input type="text" class="main-input" placeholder="Origen">
+                    <input type="text" class="main-input" placeholder="Destino">
+                    <button class="search-button">Buscar</button>
                 </div>
-                <div class="direct-flight-option">
-                    <input type="checkbox" name="direct-flight" id="direct-flight" class="direct-flight">
-                    <label for="direct-flight">Vuelo directo</label>
+                <div class="filters">
+                    <input type="date" class="filter-input" placeholder="Fecha">
+                    <input type="text" class="filter-input" placeholder="Filtrar por: Precio">
+                    <div class="sort-options">
+                        <label for="asc">Asc.</label>
+                        <input type="radio" name="order" id="asc" class="price">
+                        <label for="desc">Desc.</label>
+                        <input type="radio" name="order" id="desc" class="price">
+                    </div>
+                    <div class="direct-flight-options">
+                        <label for="direct-flight">Vuelo directo</label>
+                        <input type="radio" name="flight-type" id="direct-flight" class="direct-flight">
+                        <label for="simple-flight">Vuelo sencillo</label>
+                        <input type="radio" name="flight-type" id="simple-flight" class="simple-flight">
+                    </div>
                 </div>
-            </div>
-        </form>
-    </div>
-</section>
+                
 
-<section class="additional-sections">
-    <div class="container">
-        <div class="additional-section" #mapContainer style="height: 400px;"></div>
-    </div>
-</section>
+            </form>
+        </div>
+    </section>
+
+    <section class="additional-sections">
+        <div class="container">
+            <div class="additional-section" #mapContainer style="height: 400px;"></div>
+        </div>
+    </section>
 
 
-<section class="popular-destinations">
-    <div class="container">
-        <h2>Destinos Populares</h2>
-        <div class="destination-cards">
-            <div class="card">
-                <img src="assets/images/cancun.jpg" alt="Nombre del destino 1">
-                <h3>Cancun</h3>
-            </div>
-            <div class="card">
-                <img src="assets/images/cab.jpg" alt="Nombre del destino 2">
-                <h3>Los cabos</h3>
-            </div>
-            <div class="card">
-                <img src="assets/images/puerto.jpg" alt="Nombre del destino 2">
-                <h3>Puerto vallarta</h3>
+    <section class="popular-destinations">
+        <div class="container">
+            <h2>Destinos Populares</h2>
+            <div class="destination-cards">
+                <div class="card">
+                    <img src="assets/images/cancun.jpg" alt="Nombre del destino 1">
+                    <h3>Cancun</h3>
+                </div>
+                <div class="card">
+                    <img src="assets/images/cab.jpg" alt="Nombre del destino 2">
+                    <h3>Los cabos</h3>
+                </div>
+                <div class="card">
+                    <img src="assets/images/puerto.jpg" alt="Nombre del destino 2">
+                    <h3>Puerto vallarta</h3>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-    
-</body>
+    </section>
 
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="contact-info">
+                    <h3>Contacto</h3>
+                    <p><fa-icon [icon]="faMapMarkerAlt"></fa-icon> Dirección: Av. Insurgentes Sur 1234, Ciudad de
+                        México, CDMX</p>
+                    <p><fa-icon [icon]="faEnvelope"></fa-icon> Email: <a
+                            href="mailto:contacto@aerolineamexicana.com">contacto@aerolineamexicana.com</a></p>
+                    <p><fa-icon [icon]="faPhoneAlt"></fa-icon> Teléfono: +52 55 1234 5678</p>
+                </div>
+                <div class="social-media">
+                    <h3>Síguenos</h3>
+                    <a href="https://facebook.com" target="_blank" class="social-icon"><fa-icon
+                            [icon]="faFacebookF"></fa-icon></a>
+                    <a href="https://twitter.com" target="_blank" class="social-icon"><fa-icon
+                            [icon]="faTwitter"></fa-icon></a>
+                    <a href="https://instagram.com" target="_blank" class="social-icon"><fa-icon
+                            [icon]="faInstagram"></fa-icon></a>
+                </div>
+                <div class="payment-methods">
+                    <h3>Formas de Pago</h3>
+                    <fa-icon [icon]="faCcVisa" class="payment-icon"></fa-icon>
+                    <fa-icon [icon]="faCcMastercard" class="payment-icon"></fa-icon>
+                    <fa-icon [icon]="faCcAmex" class="payment-icon"></fa-icon>
+                    <fa-icon [icon]="faCcPaypal" class="payment-icon"></fa-icon>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="faq">
+                    <h3>Preguntas Frecuentes</h3>
+                    <a href="/faq">Consulta nuestra sección de preguntas frecuentes</a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="about-us">
+                    <h3>Acerca de Nosotros</h3>
+                    <p>Somos Aerolínea Mexicana, comprometidos con ofrecer el mejor servicio de transporte aéreo, con
+                        más de 20 años de experiencia en el sector.</p>
+                </div>
+                <div class="legal-info">
+                    <h3>Información Legal</h3>
+                    <a href="/privacy-policy">Política de Privacidad</a>
+                    <a href="/terms-of-service">Términos y Condiciones</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+</body>

@@ -17,19 +17,20 @@
   }
   
   .toast-success {
-    background-color: #5cb85c; /* Color de fondo para notificaciones de éxito */
+    background-color: #5cb85c; 
   }
   
   .toast-error {
-    background-color: #d9534f; /* Color de fondo para notificaciones de error */
+    background-color: #d9534f; 
   }
   
   .toast-info {
-    background-color: #5bc0de; /* Color de fondo para notificaciones de información */
+    background-color: #5bc0de; 
   }
   
   .toast-warning {
-    background-color: #f0ad4e; /* Color de fondo para notificaciones de advertencia */
+    background-color: #f0ad4e; 
   }
 
- 
+
+  

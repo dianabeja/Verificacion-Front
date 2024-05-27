@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { LandingComponent } from './view/landing/landing.component';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './view/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,6 +14,8 @@ import { RegisterComponent } from './view/register/register.component';
 import { ActivarCuentaComponent } from './view/code/code.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Importa BrowserAnimationsModule
 import { ToastrModule } from 'ngx-toastr';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCcAmex, faCcMastercard, faCcPaypal, faCcVisa, faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
   declarations: [
@@ -22,12 +25,15 @@ import { ToastrModule } from 'ngx-toastr';
     ActivarCuentaComponent,
     NewpassComponent,
     CodigoverificacionComponent,
-    NuevacontrasenaComponent
+    NuevacontrasenaComponent,
+    LandingComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     CommonModule,
+    FontAwesomeModule,
     HttpClientModule,
     BrowserAnimationsModule, // Agrega BrowserAnimationsModule a los imports
     ToastrModule.forRoot() // Agrega ToastrModule.forRoot() a los imports
@@ -35,4 +41,9 @@ import { ToastrModule } from 'ngx-toastr';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    // Añadir los iconos a la biblioteca
+    library.addIcons(faFacebookF, faTwitter, faInstagram, faCcVisa, faCcMastercard, faCcAmex, faCcPaypal);
+  }
+ }
