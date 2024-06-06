@@ -1,0 +1,27 @@
+<head></head>
+<body>
+    <section id="title">
+        <h2 mat-dialog-title>Destino: {{ data.destino }}</h2>
+        <button mat-button mat-dialog-close id="close">X</button>
+    </section>
+    <section id="info">
+        <!-- <div id="infoBack"></div> -->
+        <mat-dialog-content>
+            <div id="img">
+                <img alt="image" src="assets/images/paradise.jpg">
+            </div>
+            <div id="other">
+                <div id="data">
+                    <div id="dataBack"></div>
+                    <p>Origen: {{ data.origen }}</p>
+                    <p>Hora: {{ data.hora }}</p>
+                    <p>Fecha: {{ data.fecha }}</p>
+                    <p>Precio: {{ data.precio }}</p>
+                    <p>Tipo de vuelo: {{ data.tipo }}</p>
+                    <p>Lugares disponibles: {{ data.asientos }}</p>
+                </div>
+                <button id="reservar">Reservar</button>
+            </div>
+        </mat-dialog-content>
+    </section>    
+</body>

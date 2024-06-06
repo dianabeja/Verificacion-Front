@@ -1,8 +1,14 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { faFacebookF, faTwitter, faInstagram, faCcVisa, faCcMastercard, faCcAmex, faCcPaypal } from '@fortawesome/free-brands-svg-icons';
 import * as mapboxgl from 'mapbox-gl';
-import { faEnvelope, faMapMarkerAlt, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
+import { MatDialog } from '@angular/material/dialog';
+import { of } from 'rxjs';
 
+import { faEnvelope, faMapMarkerAlt, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
+import { BuscarVuelosService } from 'src/app/service/buscar-vuelos.service';
+import { vuelo } from 'src/app/models/tarjetaVuelo.model';
+import { VuelodetallesComponent } from '../vuelodetalles/vuelodetalles.component';
+import { busqueda } from 'src/app/models/busqueda.model';
 
 interface Airport {
   name: string;
@@ -57,7 +63,30 @@ export class LandingComponent implements OnInit, AfterViewInit {
 
   ];
 
-  constructor() { }
+  busqueda: busqueda = {
+    lugarD: '',
+    lugarO: '',
+  }
+
+  fechaSalida: Date | undefined
+  
+  hayTarjetas = false
+  tarjetas: vuelo[] = []
+  regex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/
+
+  constructor(private buscarService: BuscarVuelosService, public dialog: MatDialog) { }
+
+  openDialog(vuelo: vuelo){
+    const dialogRef = this.dialog.open(VuelodetallesComponent, {
+      width: '60vw',
+      data: vuelo
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("the dialog was closed");
+      
+    })
+  }
 
   ngOnInit(): void {
     (mapboxgl as any).accessToken = 'pk.eyJ1Ijoic2FsdmF2IiwiYSI6ImNsdzc2eWlpcDI3dHMyaW5yYzd5bmk0eDUifQ.fvHcDqd3c5-sGcRu1WjGxA';
@@ -80,6 +109,68 @@ export class LandingComponent implements OnInit, AfterViewInit {
       });
     } else {
       console.error('El contenedor del mapa no está definido.');
+    }
+  }
+
+  getVuelos(){
+    console.log("buscando");
+    
+    let lugarD: string = this.busqueda.lugarD
+    let lugarO: string = this.busqueda.lugarO
+    let fechasalida: string = ''
+    if(this.fechaSalida != null){
+      let date: Date = new Date(this.fechaSalida!)
+
+      const day = date.getUTCDate()
+      const month = date.getUTCMonth()
+      const year = date.getUTCFullYear();
+
+      fechasalida = `${day}/${month+1}/${year}`
+    }
+
+    console.log(fechasalida);
+
+    if(lugarD.length == 0 || lugarO.length == 0){
+      alert("Es necesario introducir tanto una ciudad de origen como de destino")
+    }
+    else{
+      if(fechasalida.length == 0){
+        this.buscarService.getVuelos(lugarD, lugarO).subscribe({
+          next: response => this.ordenarVuelos(response),
+          error: err => alert("introduce bien el origen/destino"),
+          complete: () => console.log("complete")
+          })
+      }
+      else {
+        let subscripcion = this.buscarService.getVuelosConFecha(lugarD, lugarO, fechasalida).subscribe({
+          next: response => this.ordenarVuelos(response),
+          error: err => alert("introduce bien el origen/destino"),
+          complete: () => console.log("complete")
+          })
+      }
+    }
+  }
+
+  ordenarVuelos(vuelos: any){
+    console.log(vuelos);
+    let arreglo: any[] = vuelos
+    let vuelosArreglados: any[] = []
+    arreglo.forEach(vuelo => {
+      let tarjeta: vuelo = 
+      {
+        origen: this.busqueda.lugarO.split(',')[0],
+        destino: this.busqueda.lugarD.split(',')[0],
+        fecha: vuelo.fechaSalida,
+        precio: 0,
+        hora: vuelo.hora_Salida,
+        tipo: vuelo.asientosdisponibles,
+        asientos: 0
+      }
+      vuelosArreglados.push(tarjeta)
+    })
+    this.tarjetas = vuelosArreglados
+    if(this.tarjetas.length != 0){
+      this.hayTarjetas = true
     }
   }
 }

@@ -1,0 +1,78 @@
+#close{
+    float: right;
+    font-size: 1.6em;
+    background: #24243E;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#title{
+    background-color: #24243E;
+}
+
+#info{
+    position: relative;
+    display: flex;
+    background-color: #5D5C92;
+}
+
+#infoBack{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(160, 159, 234, 0.86);
+    opacity: 0.86;
+}
+
+#img,#other{
+    display: inline-block;
+    width: 45%;
+}
+
+#img{
+    margin-right: 30px;
+    z-index: 3;
+}
+
+#data{
+    position: relative;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #24243E;
+}
+
+#dataBack{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    opacity: 0.3;
+}
+
+#reservar{
+    margin-top: 10px;
+    font-size: 1.4em;
+    background-color: #5D5C92;
+    float: right;
+    border-radius: 10px;
+    padding: 9px 35px;
+    color: white;
+    font-weight: bold;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+section{
+    width: 100%;
+}
+
+h2,button{
+    display: inline-block;
+}

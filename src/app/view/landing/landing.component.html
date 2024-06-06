@@ -15,12 +15,12 @@
             <h2>Buscar vuelo</h2>
             <form class="search-form">
                 <div class="inputs">
-                    <input type="text" class="main-input" placeholder="Origen">
-                    <input type="text" class="main-input" placeholder="Destino">
-                    <button class="search-button">Buscar</button>
+                    <input type="text" class="main-input" placeholder="Origen" [(ngModel)]="busqueda.lugarO" name="lugarO">
+                    <input type="text" class="main-input" placeholder="Destino" [(ngModel)]="busqueda.lugarD" name="lugarD">
+                    <button class="search-button" (click)="getVuelos()">Buscar</button>
                 </div>
                 <div class="filters">
-                    <input type="date" class="filter-input" placeholder="Fecha">
+                    <input type="date" class="filter-input" placeholder="Fecha" [(ngModel)]="fechaSalida" name="fecha">
                     <input type="text" class="filter-input" placeholder="Filtrar por: Precio">
                     <div class="sort-options">
                         <label for="asc">Asc.</label>
@@ -42,11 +42,20 @@
     </section>
 
     <section class="additional-sections">
-        <div class="container">
-            <div class="additional-section" #mapContainer style="height: 400px;"></div>
+        <div class="map-container">
+            <div class="additional-section" #mapContainer style="height: 360px;"></div>
+        </div>
+        <div class="travels-container">
+            <div class="travel-card" *ngFor="let tarjeta of tarjetas" mat-button (click)="openDialog(tarjeta)">
+                <div class="origenDestino">{{tarjeta.origen}} - {{tarjeta.destino}}</div><br>
+                <div class="informacion">Fecha:{{tarjeta.fecha}}  Precio:${{tarjeta.precio}}  Duracion:0hrs</div>
+            </div>
+            <div *ngIf="!hayTarjetas" id="blankspace">
+                <img id="blankimg" src="assets/images/vuelo.png">
+                <p id="blanktext">Escribe un destino y empieza a viajar</p>
+            </div>
         </div>
     </section>
-
 
     <section class="popular-destinations">
         <div class="container">

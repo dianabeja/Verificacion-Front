@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { LandingComponent } from './view/landing/landing.component';
 import { AppComponent } from './app.component';
@@ -16,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { ToastrModule } from 'ngx-toastr';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCcAmex, faCcMastercard, faCcPaypal, faCcVisa, faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { VuelodetallesComponent } from './view/vuelodetalles/vuelodetalles.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { faCcAmex, faCcMastercard, faCcPaypal, faCcVisa, faFacebookF, faInstagra
     NewpassComponent,
     CodigoverificacionComponent,
     NuevacontrasenaComponent,
-    LandingComponent
+    LandingComponent,
+    VuelodetallesComponent
 
   ],
   imports: [
@@ -34,7 +38,10 @@ import { faCcAmex, faCcMastercard, faCcPaypal, faCcVisa, faFacebookF, faInstagra
     AppRoutingModule, 
     CommonModule,
     FontAwesomeModule,
+    FormsModule,
     HttpClientModule,
+    MatDialogModule,
+    MatButtonModule,
     BrowserAnimationsModule, // Agrega BrowserAnimationsModule a los imports
     ToastrModule.forRoot() // Agrega ToastrModule.forRoot() a los imports
   ],
