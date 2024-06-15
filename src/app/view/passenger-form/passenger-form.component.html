@@ -1,0 +1,46 @@
+<header class="header">
+    <div class="logo-container">
+        <img src="assets/images/Mexicana (3).png" alt="Aerolínea Mexicana" class="logo">
+    </div>
+</header>
+<div class="container">
+    <div class="instructions">
+        <i class="fas fa-info-circle info-icon"></i>
+        <p>Por favor, complete la información de los pasajeros para continuar con su reserva.</p>
+    </div>
+    <form [formGroup]="passengerForms[currentPassengerIndex]" (ngSubmit)="onSubmit()" *ngIf="!allFormsSubmitted" class="form">
+        <h3><i class="fas fa-user"></i> Pasajero {{ currentPassengerIndex + 1 }} de {{ numPassengers }}</h3>
+        <div class="form-group">
+            <label for="firstName"><i class="fas fa-user-edit"></i> Nombre:</label>
+            <input id="firstName" formControlName="firstName" type="text">
+            <span *ngIf="passengerForms[currentPassengerIndex].get('firstName')?.invalid && passengerForms[currentPassengerIndex].get('firstName')?.touched" class="error-message">Nombre es requerido.</span>
+        </div>
+        <div class="form-group">
+            <label for="lastName"><i class="fas fa-user-edit"></i> Apellido:</label>
+            <input id="lastName" formControlName="lastName" type="text">
+            <span *ngIf="passengerForms[currentPassengerIndex].get('lastName')?.invalid && passengerForms[currentPassengerIndex].get('lastName')?.touched" class="error-message">Apellido es requerido.</span>
+        </div>
+        <div class="form-group">
+            <label for="age"><i class="fas fa-birthday-cake"></i> Edad:</label>
+            <input id="age" formControlName="age" type="number">
+            <span *ngIf="passengerForms[currentPassengerIndex].get('age')?.invalid && passengerForms[currentPassengerIndex].get('age')?.touched" class="error-message">Edad es requerida y debe ser mayor a 0.</span>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber"><i class="fas fa-phone"></i> Número de Teléfono:</label>
+            <input id="phoneNumber" formControlName="phoneNumber" type="text">
+            <span *ngIf="passengerForms[currentPassengerIndex].get('phoneNumber')?.invalid && passengerForms[currentPassengerIndex].get('phoneNumber')?.touched" class="error-message">Número de teléfono es requerido.</span>
+        </div>
+        <div class="form-group">
+            <label for="email"><i class="fas fa-envelope"></i> Correo Electrónico:</label>
+            <input id="email" formControlName="email" type="email">
+            <span *ngIf="passengerForms[currentPassengerIndex].get('email')?.invalid && passengerForms[currentPassengerIndex].get('email')?.touched" class="error-message">Correo electrónico es requerido y debe ser válido.</span>
+        </div>
+        <button type="submit"><i class="fas fa-paper-plane"></i> Enviar</button>
+    </form>
+
+    <div *ngIf="allFormsSubmitted" class="form">
+        <h3><i class="fas fa-check-circle"></i> Todos los formularios han sido enviados.</h3>
+        <p>Gracias por proporcionar la información.</p>
+    </div>
+</div>
+

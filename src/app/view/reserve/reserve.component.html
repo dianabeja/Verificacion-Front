@@ -1,0 +1,170 @@
+<header class="header">
+    <div class="logo-container">
+        <img src="assets/images/Mexicana (3).png" alt="Aerolínea Mexicana" class="logo">
+    </div>
+</header>
+
+<body>
+    <section class="reservation">
+        <div class="container">
+            <div class="reservation-table">
+                <div class="table-item">
+                    <span class="label"><i class="fas fa-plane-departure table-icon"></i> Desde</span>
+                    <span class="value">MEX, CDMX <span class="sub-value">AIMC</span></span>
+                </div>
+                <div class="table-item">
+                    <span class="label"><i class="fas fa-plane-arrival table-icon"></i> Hacia</span>
+                    <span class="value">USA, NY <span class="sub-value">JFKIA</span></span>
+                </div>
+                <div class="table-item">
+                    <span class="label"><i class="fas fa-calendar-alt table-icon"></i> Salida - Regreso</span>
+                    <span class="value"><span>20.11.2024</span> - <span>29.11.2024</span> </span>
+                </div>
+                <div class="table-item">
+                    <span class="label"><i class="fas fa-user table-icon"></i> Pasajeros</span>
+                    <div class="value passenger-dropdown">
+                        <span>1 Pasajero </span>
+                        <div class="dropdown-indicator">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="passenger-dropdown-content">
+                            <label for="num-passengers"><i class="fas fa-user-plus table-icon"></i> Número de
+                                Pasajeros:</label>
+                            <input type="number" id="num-passengers" name="num-passengers" min="1" max="3" value="1">
+                            <br>
+                            <label for="seat-class"><i class="fas fa-chair"></i> Clase:</label>
+                            <select id="seat-class" name="seat-class">
+                                <option value="turista"><i class="fas fa-plane"></i> Turista</option>
+                                <option value="ejecutiva" selected><i class="fas fa-briefcase"></i> Ejecutiva</option>
+                                <option value="primera"><i class="fas fa-crown"></i> Primera</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="flight-summary">
+            <div class="summary-section">
+                <h2>Resumen del Vuelo</h2>
+                <div class="summary-item">
+                    <span class="summary-label"><i class="fas fa-plane"></i> Operado por:</span>
+                    <span class="summary-value">Mexicana</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label"><i class="fas fa-plane"></i> Vuelo:</span>
+                    <span class="summary-value">MX4T</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label"><i class="fas fa-location-arrow"></i> Origen:</span>
+                    <span class="summary-value">MEX, CDMX (AIMC)</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label"><i class="fas fa-map-marker-alt"></i> Destino:</span>
+                    <span class="summary-value">USA, NY (JFKIA)</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label"><i class="fas fa-clock"></i> Salida:</span>
+                    <span class="summary-value">20.11.2024 - 08:00 AM</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label"><i class="fas fa-clock"></i> Regreso:</span>
+                    <span class="summary-value">29.11.2024 - 10:00 PM</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label"><i class="fas fa-hourglass-half"></i> Duración:</span>
+                    <span class="summary-value">5h 30m</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label"><i class="fas fa-door-open"></i> Puerta de Embarque:</span>
+                    <span class="summary-value">A23</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label"><i class="fas fa-chair"></i> Clase:</span>
+                    <span class="summary-value">Ejecutiva</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label"><i class="fas fa-plane"></i> Avión:</span>
+                    <span class="summary-value">Boeing 737 - 300</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label"><i class="fas fa-concierge-bell"></i> Servicios a bordo:</span>
+                    <span class="summary-value">
+                        <i class="fas fa-wifi"></i>
+                        &nbsp;&nbsp;
+                        <i class="fas fa-utensils"></i>
+                        &nbsp;&nbsp;
+                        <i class="fas fa-tv"></i>
+                        &nbsp;&nbsp;
+                        <i class="fas fa-plug"></i>
+                        &nbsp;&nbsp;
+                        <i class="fas fa-cocktail"></i>
+                        &nbsp;&nbsp;
+                        <i class="fas fa-briefcase"></i>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="additional-sections">
+            <div class="additional-section">
+                <h3>Tus Vuelos</h3>
+                <ul>
+                    <li>Vuelo 1: MEX - JFK, Salida: 20.11.2024,
+                        Regreso: 29.11.2024, Precio: $500</li>
+                    <br>
+                    <li>Vuelo 2: MEX - LAX, Salida: 21.11.2024,
+                        Regreso: 30.11.2024, Precio: $550</li>
+                    <br>
+
+                </ul>
+                <p>Total: $1650</p>
+            </div>
+        </section>
+
+        <!-- Sección de selección de tarifas -->
+        
+    </div>
+
+    <section class="baggage-selection">
+        <h3>Selecciona tu Tarifa</h3>
+        <div class="tariff-options">
+            <div class="tariff-option" id="classic" (click)="selectTariff('classic')">
+                <h4><i class="fas fa-check-circle"></i> Clásica</h4>
+                <p>Incluye:</p>
+                <ul>
+                    <li><i class="fas fa-suitcase-rolling"></i> 1 pieza de equipaje de mano</li>
+                    <li><i class="fas fa-utensils"></i> Snack y bebida</li>
+                    <li><i class="fas fa-tv"></i> Entretenimiento a bordo</li>
+                </ul>
+            </div>
+            <div class="tariff-option" id="flexible" (click)="selectTariff('flexible')">
+                <h4><i class="fas fa-check-circle"></i> Flexible</h4>
+                <p>Incluye:</p>
+                <ul>
+                    <li><i class="fas fa-suitcase-rolling"></i> 1 pieza de equipaje de mano</li>
+                    <li><i class="fas fa-luggage-cart"></i> 1 pieza de equipaje documentado</li>
+                    <li><i class="fas fa-utensils"></i> Snack y bebida</li>
+                    <li><i class="fas fa-tv"></i> Entretenimiento a bordo</li>
+                    <li><i class="fas fa-exchange-alt"></i> Cambios de vuelo sin costo</li>
+                </ul>
+            </div>
+            <div class="tariff-option" id="plus" (click)="selectTariff('plus')">
+                <h4><i class="fas fa-check-circle"></i> Plus</h4>
+                <p>Incluye:</p>
+                <ul>
+                    <li><i class="fas fa-suitcase-rolling"></i> 2 piezas de equipaje de mano</li>
+                    <li><i class="fas fa-luggage-cart"></i> 2 piezas de equipaje documentado</li>
+                    <li><i class="fas fa-utensils"></i> Comida gourmet y bebida</li>
+                    <li><i class="fas fa-tv"></i> Entretenimiento a bordo</li>
+                    <li><i class="fas fa-exchange-alt"></i> Cambios de vuelo sin costo</li>
+                    <li><i class="fas fa-cancel"></i> Cancelacion de vuelo sin costo</li>
+                    <li><i class="fas fa-concierge-bell"></i> Acceso a salas VIP</li>
+                </ul>
+            </div>
+        </div>
+        <button class="continue-button" (click)="continue()">Continuar</button>
+    </section>
+</body>
