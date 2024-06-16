@@ -68,6 +68,26 @@ export class ActivarCuentaComponent {
     this.numero_activacion[8] = (event.target as HTMLInputElement).value;
   }
 
+  moveFocus(event: Event, nextElementId: string | null) {
+    const input = event.target as HTMLInputElement;
+    if (input.value.length === input.maxLength && nextElementId) {
+      const nextInput = document.getElementById(nextElementId) as HTMLInputElement;
+      if (nextInput) {
+        nextInput.focus();
+      }
+    }
+  }
+
+  // Método para limpiar todos los inputs
+  limpiarInputs() {
+    const inputs = document.querySelectorAll('.codigo-input') as NodeListOf<HTMLInputElement>;
+    inputs.forEach(input => input.value = '');
+    const firstInput = document.getElementById('codigo1') as HTMLInputElement;
+    if (firstInput) {
+      firstInput.focus();
+    }
+  }
+
   async reenviarCorreo() {
     this.mensaje = "Validando .... :)"
     this.activar = true;
@@ -122,6 +142,7 @@ export class ActivarCuentaComponent {
           console.log("error")
           window.alert("Error al activar la cuenta");
           this.toastr.error('Error al activar la cuenta', 'Error');
+          this.limpiarInputs(); // Limpiar los inputs en caso de error
         }
       } catch (error) {
         console.error(error);
