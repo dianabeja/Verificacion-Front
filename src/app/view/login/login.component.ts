@@ -3,33 +3,32 @@ import { login_interface } from 'src/app/models/login.model';
 import { LoginService } from 'src/app/service/login.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private loginservice: LoginService,
-    private router: Router,
-  ) { }
+  constructor(private loginservice: LoginService, private router: Router) {}
 
   Identificador: string = '';
   Contrasena: string = '';
   mostrarContrasena: boolean = false;
   identificadorLleno: boolean = true;
   contrasenaLlena: boolean = true;
+  mensajeError: string = '';
 
   login_object: login_interface = {
     identificador: '',
     contraseña: '',
+    access_Token:'',
   };
 
   actualizarIdentificador(event: Event): void {
     this.Identificador = (event.target as HTMLInputElement).value;
     this.identificadorLleno = this.Identificador.trim().length > 0;
   }
-  
+
   actualizarContrasena(event: Event): void {
     this.Contrasena = (event.target as HTMLInputElement).value;
     this.contrasenaLlena = this.Contrasena.trim().length > 0;
@@ -40,47 +39,43 @@ export class LoginComponent {
     this.login_object.contraseña = this.Contrasena;
   }
 
-  revisarCorreo(){
-    let tamaño= this.Identificador.length;
-    if(tamaño == 0) {
-      return false;
-    }else{
-      return true;
-    }
+  revisarCorreo() {
+    return this.Identificador.trim().length > 0;
   }
 
-  revisarContrasena(){
-    let tamaño= this.Contrasena.length;
-    if(tamaño == 0) {
-      return false;
-    }else{
-      return true;
-    }
+  revisarContrasena() {
+    return this.Contrasena.trim().length > 0;
   }
 
   async iniciarSesion() {
-    let correolleno= this.revisarCorreo();
-    if( correolleno==false){
-        this.identificadorLleno= false;
-    }
-    let contrasenallena= this.revisarContrasena();
-    if( contrasenallena==false){
-        this.contrasenaLlena= false;
-    }
-    if(correolleno== true &&contrasenallena== true){
-      await this.almacenarDatos();
-      let a = await this.loginservice
-        .login(this.login_object.identificador, this.login_object.contraseña)
-        .toPromise();
-        this.router.navigate(['/'])
-        console.log(a);
+    this.identificadorLleno = this.revisarCorreo();
+    this.contrasenaLlena = this.revisarContrasena();
+
+    if (this.identificadorLleno && this.contrasenaLlena) {
+      this.almacenarDatos();
+      try {
+        const response = await this.loginservice
+          .login(this.login_object.identificador, this.login_object.contraseña)
+          .toPromise();
+
+        console.log('Response:', response);  // Imprime la respuesta en la consola
+
+        // Guarda el token en el almacenamiento local
+        if (response && response.access_Token) {
+          localStorage.setItem('access_Token', response.access_Token);
+        }
+
+        // Redirige a la página principal
+        this.router.navigate(['/']);
+      } catch (error) {
+        this.mensajeError = 'Usuario o contraseña inválidos';
+        console.error(error);
+      }
     }
   }
 
   mostrarOcultarContrasena() {
-    const contraseñaInput = document.getElementById(
-      'contrasena'
-    ) as HTMLInputElement;
+    const contraseñaInput = document.getElementById('contrasena') as HTMLInputElement;
 
     if (contraseñaInput.type === 'password') {
       contraseñaInput.type = 'text';

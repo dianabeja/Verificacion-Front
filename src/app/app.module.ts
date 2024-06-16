@@ -14,7 +14,7 @@ import { CodigoverificacionComponent } from './view/codigoverificacion/codigover
 import { NuevacontrasenaComponent } from './view/nuevacontrasena/nuevacontrasena.component';
 import { RegisterComponent } from './view/register/register.component';
 import { ActivarCuentaComponent } from './view/code/code.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Importa BrowserAnimationsModule
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCcAmex, faCcMastercard, faCcPaypal, faCcVisa, faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -31,26 +31,24 @@ import { VuelodetallesComponent } from './view/vuelodetalles/vuelodetalles.compo
     NuevacontrasenaComponent,
     LandingComponent,
     VuelodetallesComponent
-
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     CommonModule,
     FontAwesomeModule,
     FormsModule,
     HttpClientModule,
     MatDialogModule,
     MatButtonModule,
-    BrowserAnimationsModule, // Agrega BrowserAnimationsModule a los imports
-    ToastrModule.forRoot() // Agrega ToastrModule.forRoot() a los imports
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
-    // Añadir los iconos a la biblioteca
     library.addIcons(faFacebookF, faTwitter, faInstagram, faCcVisa, faCcMastercard, faCcAmex, faCcPaypal);
   }
- }
+}

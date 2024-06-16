@@ -45,7 +45,7 @@ img {
 i {
     position: relative;
     top: -25px;
-    left: 270px;
+    left: 240px; /* Adjusted to fit the new layout */
     cursor: pointer;
 }
 
@@ -71,6 +71,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 button:hover {
@@ -88,4 +89,10 @@ a {
 
 .error-message {
     color: rgba(255, 0, 98, 0.482);
+    font-size: 12px;
+}
+
+.error-message-container {
+    margin-top: 10px;
+    text-align: center;
 }

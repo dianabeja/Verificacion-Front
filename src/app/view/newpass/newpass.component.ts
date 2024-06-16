@@ -17,6 +17,7 @@ export class NewpassComponent {
   ) {}
 
   identificadorLleno: boolean = true;
+  correoValido: boolean = true;
 
   Identificador: correo_interface = {
     Destinatario: '',
@@ -27,6 +28,7 @@ export class NewpassComponent {
   actualizarIdentificador(event: Event): void {
     this.Identificador.Destinatario = (event.target as HTMLInputElement).value;
     this.identificadorLleno = this.Identificador.Destinatario.trim().length > 0;
+    this.correoValido = this.validarCorreo(this.Identificador.Destinatario);
   }
 
   almacenarDatos() {
@@ -42,15 +44,23 @@ export class NewpassComponent {
     }
   }
 
+  validarCorreo(correo: string): boolean {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(correo);
+  }
+
   async enviarCorreo() {
     let correolleno = this.revisarCorreo();
-    if (correolleno == false) {
+    this.correoValido = this.validarCorreo(this.Identificador.Destinatario);
+
+    if (!correolleno || !this.correoValido) {
       this.identificadorLleno = false;
+      return;
     } else {
       this.identificadorLleno = true;
     }
 
-    if (correolleno == true) {
+    if (correolleno && this.correoValido) {
       this.almacenarDatos();
       this.cache.guardarDatoLocal('cuenta', this.Destinatario);
       let a = await this.correoservice.correo(this.Destinatario).toPromise();

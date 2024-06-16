@@ -1,14 +1,16 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { faFacebookF, faTwitter, faInstagram, faCcVisa, faCcMastercard, faCcAmex, faCcPaypal } from '@fortawesome/free-brands-svg-icons';
 import * as mapboxgl from 'mapbox-gl';
 import { MatDialog } from '@angular/material/dialog';
 import { of } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { faEnvelope, faMapMarkerAlt, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 import { BuscarVuelosService } from 'src/app/service/buscar-vuelos.service';
 import { vuelo } from 'src/app/models/tarjetaVuelo.model';
 import { VuelodetallesComponent } from '../vuelodetalles/vuelodetalles.component';
 import { busqueda } from 'src/app/models/busqueda.model';
+import {jwtDecode} from 'jwt-decode'; 
 
 interface Airport {
   name: string;
@@ -31,6 +33,9 @@ export class LandingComponent implements OnInit, AfterViewInit {
   faEnvelope = faEnvelope;
   faMapMarkerAlt = faMapMarkerAlt;
   faPhoneAlt = faPhoneAlt;
+  isLoggedIn: boolean = false; 
+  showUserMenu = false;
+  userFullName: string = '';
   
   @ViewChild('mapContainer', { static: false }) mapContainer!: ElementRef;
   map!: mapboxgl.Map;
@@ -74,7 +79,7 @@ export class LandingComponent implements OnInit, AfterViewInit {
   tarjetas: vuelo[] = []
   regex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/
 
-  constructor(private buscarService: BuscarVuelosService, public dialog: MatDialog) { }
+  constructor(private buscarService: BuscarVuelosService, public dialog: MatDialog, private router: Router, private elementRef: ElementRef, ) { }
 
   openDialog(vuelo: vuelo){
     const dialogRef = this.dialog.open(VuelodetallesComponent, {
@@ -90,6 +95,23 @@ export class LandingComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     (mapboxgl as any).accessToken = 'pk.eyJ1Ijoic2FsdmF2IiwiYSI6ImNsdzc2eWlpcDI3dHMyaW5yYzd5bmk0eDUifQ.fvHcDqd3c5-sGcRu1WjGxA';
+    this.checkLoginStatus();
+
+  }
+
+  checkLoginStatus() {
+    const accessToken = localStorage.getItem('access_Token');
+    this.isLoggedIn = !!accessToken; // Asigna true si hay un token de acceso en localStorage
+
+    if (accessToken) {
+      console.log('Usuario está logueado.');
+      const decoded: any = jwtDecode(accessToken); // Decodificar el token JWT
+      console.log('Decoded token:', decoded);
+      this.userFullName = decoded.identificador; // Ajusta según la estructura de tu token
+
+    } else {
+      console.log('Usuario no está logueado.');
+    }
   }
 
   ngAfterViewInit(): void {
@@ -171,6 +193,23 @@ export class LandingComponent implements OnInit, AfterViewInit {
     this.tarjetas = vuelosArreglados
     if(this.tarjetas.length != 0){
       this.hayTarjetas = true
+    }
+  }
+  logout() {
+    localStorage.removeItem('access_Token'); // Elimina el token de acceso del almacenamiento local
+    this.isLoggedIn = false; // Actualiza el estado de isLoggedIn
+    this.router.navigate(['/']); // Redirige a la página de inicio de sesión u otra página deseada
+  }
+  toggleUserMenu(event: Event) {
+    event.stopPropagation(); 
+    this.showUserMenu = !this.showUserMenu; 
+  }
+  
+
+  @HostListener('document:click', ['$event'])
+  onClick(event: MouseEvent) {
+    if (this.showUserMenu == true) {
+      this.showUserMenu = false;
     }
   }
 }
