@@ -158,6 +158,7 @@ export class LandingComponent implements OnInit, AfterViewInit {
     arreglo.forEach(vuelo => {
       let tarjeta: vuelo = 
       {
+        viajeID: vuelo.Viaje_ID,
         origen: this.busqueda.lugarO.split(',')[0],
         destino: this.busqueda.lugarD.split(',')[0],
         fecha: vuelo.fechaSalida,

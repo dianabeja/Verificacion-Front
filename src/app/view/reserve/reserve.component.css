@@ -303,3 +303,15 @@ h3 {
 .continue-button:hover {
     background-color: #4A4A76;
 }
+
+
+.passenger-dropdown-content {
+    display: none;
+}
+
+.passenger-dropdown-content.show {
+    display: block;
+} 
+
+
+
