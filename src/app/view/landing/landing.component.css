@@ -21,6 +21,7 @@ html, body {
     justify-content: space-between;
     padding: 20px 40px;
     flex-shrink: 0;
+    height: 40px;
   }
   
   .logo-container {
@@ -46,6 +47,57 @@ html, body {
   .auth-link:hover {
     text-decoration: underline;
   }
+
+
+.profile-button {
+  background-color: #5D5C92;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative; /* Añadido */
+  z-index: 1001;
+  
+}
+.profile-button:hover {
+  background-color: #8786c4;
+}
+
+.user-menu-content {
+  position: relative;
+  text-align: center;
+  top: 50px;
+  right: 0px; 
+  background-color: rgba(93, 92, 146, 0.9); ;
+  border:none;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000;
+  display: none;
+}
+
+.user-menu.active, .user-menu-content.active {
+  display: block; 
+}
+
+.user-menu a{
+  color: #5D5C92;
+  margin-right: 10px;
+}
+.user-menu-content a {
+  display: block;
+  padding: 10px;
+  color: #E2DBED;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.user-menu-content :hover {
+  color: #ffffff;
+}
+
   
   .content {
     flex: 1;
