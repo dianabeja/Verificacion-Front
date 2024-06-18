@@ -1,36 +1,41 @@
 <body>
   <div class="container">
-        <div class="form">
-            <h2>Verificar cuenta</h2>
-            <p>Se ha enviado a su bandeja de entrada.</p>
-                <div class="imagen">
-                    <img
-                      src=".\assets\images\mensaje.png"
-                      alt="login"
-                    />
-                  </div>
-                  <p>Ingrese el código de verificación enviado a su correo electronico</p>
-                <div class="form-group">
-                  <div class="password-input">
-                    <form  class="codigo-form">
-                        <input (input)="actualizarCodigo1($event)"  type="text" maxlength="1"  class="codigo-input" required>
-                        <input (input)="actualizarCodigo2($event)"  type="text" maxlength="1"  class="codigo-input" required>
-                        <input (input)="actualizarCodigo3($event)"  type="text" maxlength="1"  class="codigo-input" required>
-                        <input (input)="actualizarCodigo4($event)"  type="text" maxlength="1"  class="codigo-input" required>
-                        <input (input)="actualizarCodigo5($event)"  type="text" maxlength="1"  class="codigo-input" required>
-                        <input (input)="actualizarCodigo6($event)"  type="text" maxlength="1"  class="codigo-input" required>
-                        <input (input)="actualizarCodigo7($event)"  type="text" maxlength="1"  class="codigo-input" required>
-                        <input (input)="actualizarCodigo8($event)"  type="text" maxlength="1"  class="codigo-input" required>
-                        <input (input)="actualizarCodigo9($event)"  type="text" maxlength="1"  class="codigo-input" required>
-                    </form>
-                  </div>
-                </div>
-                <!-- <span *ngIf="activar" class="error-message">{{mensaje}}</span> -->
-
-                <p>¿No recibió su código? <a (click)="reenviarCorreo()">Enviar de nuevo</a></p>
-                <div *ngIf="loading" class="loader">Cargando...</div>
-
-                <button (click)="confirmarCodigo()">Siguiente</button>
+    <div class="form">
+      <h2>Verificar cuenta</h2>
+      <p>Se ha enviado a su bandeja de entrada.</p>
+      <div class="imagen">
+        <img src=".\assets\images\mensaje.png" alt="login" />
+      </div>
+      <p>Ingrese el código de verificación enviado a su correo electronico</p>
+      <div class="form-group">
+        <div class="password-input">
+          <form class="codigo-form">
+            <input (input)="actualizarCodigo1($event)" (input)="moveFocus($event, 'codigo2')" id="codigo1" type="text"
+              maxlength="1" class="codigo-input" required>
+            <input (input)="actualizarCodigo2($event)" (input)="moveFocus($event, 'codigo3')" id="codigo2" type="text"
+              maxlength="1" class="codigo-input" required>
+            <input (input)="actualizarCodigo3($event)" (input)="moveFocus($event, 'codigo4')" id="codigo3" type="text"
+              maxlength="1" class="codigo-input" required>
+            <input (input)="actualizarCodigo4($event)" (input)="moveFocus($event, 'codigo5')" id="codigo4" type="text"
+              maxlength="1" class="codigo-input" required>
+            <input (input)="actualizarCodigo5($event)" (input)="moveFocus($event, 'codigo6')" id="codigo5" type="text"
+              maxlength="1" class="codigo-input" required>
+            <input (input)="actualizarCodigo6($event)" (input)="moveFocus($event, 'codigo7')" id="codigo6" type="text"
+              maxlength="1" class="codigo-input" required>
+            <input (input)="actualizarCodigo7($event)" (input)="moveFocus($event, 'codigo8')" id="codigo7" type="text"
+              maxlength="1" class="codigo-input" required>
+            <input (input)="actualizarCodigo8($event)" (input)="moveFocus($event, 'codigo9')" id="codigo8" type="text"
+              maxlength="1" class="codigo-input" required>
+            <input (input)="actualizarCodigo9($event)" (input)="moveFocus($event, null)" id="codigo9" type="text"
+              maxlength="1" class="codigo-input" required>
+          </form>
         </div>
+      </div>
+
+      <p>¿No recibió su código? <a (click)="reenviarCorreo()">Enviar de nuevo</a></p>
+      <div *ngIf="loading" class="loader">Cargando...</div>
+
+      <button (click)="confirmarCodigo()">Siguiente</button>
     </div>
+  </div>
 </body>

@@ -7,6 +7,8 @@ import { NuevacontrasenaComponent } from './view/nuevacontrasena/nuevacontrasena
 import { RegisterComponent } from './view/register/register.component';
 import { ActivarCuentaComponent } from './view/code/code.component';
 import { LandingComponent } from './view/landing/landing.component';
+import { ReserveComponent } from './view/reserve/reserve.component';
+import { PassengerFormComponent } from './view/passenger-form/passenger-form.component';
 
 const routes: Routes = [
   {path:"login", component: LoginComponent},
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'codVerificacion', component: CodigoverificacionComponent },
   { path: 'nuevaContrasena', component: NuevacontrasenaComponent },
   { path: 'landing', component: LandingComponent },
+  { path: 'reserve', component: ReserveComponent},
+  { path: 'passenger-form', component: PassengerFormComponent}
 ];
 
 @NgModule({

@@ -10,37 +10,47 @@
             <div class="reservation-table">
                 <div class="table-item">
                     <span class="label"><i class="fas fa-plane-departure table-icon"></i> Desde</span>
-                    <span class="value">MEX, CDMX <span class="sub-value">AIMC</span></span>
+                    <span class="value">{{ origen }}<span class="sub-value">{{viaje?.aeropuertoOrigen.aeropuerto_Nombre}}</span></span>
                 </div>
                 <div class="table-item">
                     <span class="label"><i class="fas fa-plane-arrival table-icon"></i> Hacia</span>
-                    <span class="value">USA, NY <span class="sub-value">JFKIA</span></span>
+                    <span class="value">{{ destino }}<span class="sub-value">{{viaje?.aeropuertoDestino.aeropuerto_Nombre}}</span></span>
                 </div>
                 <div class="table-item">
-                    <span class="label"><i class="fas fa-calendar-alt table-icon"></i> Salida - Regreso</span>
-                    <span class="value"><span>20.11.2024</span> - <span>29.11.2024</span> </span>
+                    <span class="label"><i class="fas fa-calendar-alt table-icon"></i> Salida</span>
+                    <span class="value"><span>{{ viaje?.fechaSalida | date:'dd/MM/yyyy' }}</span> - <span>{{ viaje?.fechaSalida | date:'HH:mm' }}</span> </span> 
                 </div>
-                <div class="table-item">
+                <div class="table-item" (click)="toggleDropdown()">
+
                     <span class="label"><i class="fas fa-user table-icon"></i> Pasajeros</span>
                     <div class="value passenger-dropdown">
-                        <span>1 Pasajero </span>
+                        <!-- <span>1 Pasajero </span> -->
+                        <span>{{ numPassengers }} Pasajero{{ numPassengers > 1 ? 's' : '' }}</span>
                         <div class="dropdown-indicator">
                             <i class="fas fa-chevron-down"></i>
                         </div>
-                        <div class="passenger-dropdown-content">
+                        <div class="passenger-dropdown-content" [class.show]="dropdownVisible">
                             <label for="num-passengers"><i class="fas fa-user-plus table-icon"></i> Número de
                                 Pasajeros:</label>
-                            <input type="number" id="num-passengers" name="num-passengers" min="1" max="3" value="1">
+                            <input type="number" id="num-passengers" name="num-passengers" min="1" max="3" value="1" (keydown)="preventInput($event)" (input)="updateNumPassengers($event)"> 
                             <br>
                             <label for="seat-class"><i class="fas fa-chair"></i> Clase:</label>
-                            <select id="seat-class" name="seat-class">
-                                <option value="turista"><i class="fas fa-plane"></i> Turista</option>
-                                <option value="ejecutiva" selected><i class="fas fa-briefcase"></i> Ejecutiva</option>
-                                <option value="primera"><i class="fas fa-crown"></i> Primera</option>
+                            <select id="seat-class" name="seat-class" (change)="updateClass($event)">
+                                <option value="turista">Turista</option>
+                                <option value="ejecutiva" selected>Ejecutiva</option>
+                                <option value="primera">Primera</option>
                             </select>
+                            <!-- <select id="seat-class" name="seat-class">
+                                <option value="turista"><i class="fas fa-plane"></i> Turista</option>
+                                <option value="ejecutiva" selected><i class="fas fa-briefcase"></i> Ejecutiva
+                                </option>
+                                <option value="primera"><i class="fas fa-crown"></i> Primera</option>
+                            </select> -->
                         </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
     </section>
@@ -55,39 +65,47 @@
                 </div>
                 <div class="summary-item">
                     <span class="summary-label"><i class="fas fa-plane"></i> Vuelo:</span>
-                    <span class="summary-value">MX4T</span>
+                    <span class="summary-value">{{ viaje?.vueloId.Vuelo_ID }}</span>
                 </div>
                 <div class="summary-item">
                     <span class="summary-label"><i class="fas fa-location-arrow"></i> Origen:</span>
-                    <span class="summary-value">MEX, CDMX (AIMC)</span>
+                    <span class="summary-value">{{ origen }} ({{viaje?.aeropuertoOrigen.aeropuerto_Nombre}})</span>
                 </div>
                 <div class="summary-item">
                     <span class="summary-label"><i class="fas fa-map-marker-alt"></i> Destino:</span>
-                    <span class="summary-value">USA, NY (JFKIA)</span>
+                    <span class="summary-value">{{ destino }} ({{viaje?.aeropuertoDestino.aeropuerto_Nombre}})</span>
                 </div>
                 <div class="summary-item">
                     <span class="summary-label"><i class="fas fa-clock"></i> Salida:</span>
-                    <span class="summary-value">20.11.2024 - 08:00 AM</span>
+                    <span class="summary-value">{{ viaje?.fechaSalida | date:'dd/MM/yyyy' }} - {{ viaje?.fechaSalida | date:'HH:mm' }}</span>
                 </div>
                 <div class="summary-item">
-                    <span class="summary-label"><i class="fas fa-clock"></i> Regreso:</span>
-                    <span class="summary-value">29.11.2024 - 10:00 PM</span>
+                    <span class="summary-label"><i class="fas fa-clock"></i> Llegada:</span>
+                    <span class="summary-value">{{ viaje?.fechaLlegada | date:'dd/MM/yyyy' }} - {{ viaje?.fechaLlegada | date:'HH:mm' }}</span>
                 </div>
                 <div class="summary-item">
                     <span class="summary-label"><i class="fas fa-hourglass-half"></i> Duración:</span>
-                    <span class="summary-value">5h 30m</span>
+                    <!-- <span class="summary-value">{{ calculateDuration(viaje?.fechaSalida, viaje?.fechaLlegada) }}</span> -->
+                    <span class="summary-value">{{ calculateDuration() }}</span>
+
                 </div>
-                <div class="summary-item">
+                <!-- <div class="summary-item">
                     <span class="summary-label"><i class="fas fa-door-open"></i> Puerta de Embarque:</span>
                     <span class="summary-value">A23</span>
-                </div>
+                </div> -->
                 <div class="summary-item">
                     <span class="summary-label"><i class="fas fa-chair"></i> Clase:</span>
-                    <span class="summary-value">Ejecutiva</span>
+                    <span class="summary-value">{{ selectedClass }}</span>
                 </div>
+                <!-- <div class="summary-item">
+                    <span class="summary-label"><i class="fas fa-chair"></i> Clase:</span>
+                    <span class="summary-value">Ejecutiva</span>
+                </div> -->
                 <div class="summary-item">
                     <span class="summary-label"><i class="fas fa-plane"></i> Avión:</span>
-                    <span class="summary-value">Boeing 737 - 300</span>
+                    <!-- <span class="summary-value">Boeing 737 - 300</span> -->
+                    <span class="summary-value">{{ viaje?.vueloId.avion_Id.modeloAvionId.modelo_Avion_Nombre }}</span>
+                    <!-- <span class="summary-value">{{ viaje?.vueloId.pasajerosTotales}}</span> -->
                 </div>
                 <div class="summary-item">
                     <span class="summary-label"><i class="fas fa-concierge-bell"></i> Servicios a bordo:</span>
@@ -108,24 +126,39 @@
             </div>
         </section>
 
+        <!-- <section class="additional-sections">
+            <div class="additional-section">
+                <h3>Tus Vuelos</h3>
+                <ul>
+                    <li>Vuelo 1: {{ origen }} - {{ destino }}, 
+                        <br>Salida: {{ viaje?.fechaSalida | date:'dd/MM/yyyy' }},
+                        <br>Precio: {{viaje?.tarifa_dinstancia}}
+                    </li>
+                    <br>
+
+                </ul>
+            </div>
+        </section> -->
+
         <section class="additional-sections">
             <div class="additional-section">
                 <h3>Tus Vuelos</h3>
                 <ul>
-                    <li>Vuelo 1: MEX - JFK, Salida: 20.11.2024,
-                        Regreso: 29.11.2024, Precio: $500</li>
-                    <br>
-                    <li>Vuelo 2: MEX - LAX, Salida: 21.11.2024,
-                        Regreso: 30.11.2024, Precio: $550</li>
-                    <br>
-
+                    <ng-container *ngFor="let pasajero of pasajeros; let i = index">
+                        <li>Vuelo {{ i + 1 }}: {{ origen }} - {{ destino }}, 
+                            <br>Salida: {{ viaje?.fechaSalida | date:'dd/MM/yyyy' }},
+                            <br>Precio: {{ viaje?.tarifa_dinstancia }}
+                        </li>
+                        <br>
+                    </ng-container>
                 </ul>
-                <p>Total: $1650</p>
+                <p>Total: </p>
             </div>
         </section>
+        
 
         <!-- Sección de selección de tarifas -->
-        
+
     </div>
 
     <section class="baggage-selection">

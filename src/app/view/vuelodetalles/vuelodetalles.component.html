@@ -13,6 +13,7 @@
             <div id="other">
                 <div id="data">
                     <div id="dataBack"></div>
+                    <!-- <p>Id: {{ data.viajeID }}</p> -->
                     <p>Origen: {{ data.origen }}</p>
                     <p>Hora: {{ data.hora }}</p>
                     <p>Fecha: {{ data.fecha }}</p>
@@ -20,7 +21,7 @@
                     <p>Tipo de vuelo: {{ data.tipo }}</p>
                     <p>Lugares disponibles: {{ data.asientos }}</p>
                 </div>
-                <button id="reservar">Reservar</button>
+                <button id="reservar" (click)="reservarVuelo(data.viajeID)">Reservar</button>
             </div>
         </mat-dialog-content>
     </section>    

@@ -3,7 +3,8 @@ import { register_interface } from 'src/app/models/register.model';
 import { RegisterService } from 'src/app/service/register.service';
 import { Router } from '@angular/router';
 import { CacheService } from 'src/app/service/cache.service';
-
+import { HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -11,9 +12,10 @@ import { CacheService } from 'src/app/service/cache.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  constructor(private registerservice: RegisterService,
+  constructor(
+    private registerservice: RegisterService,
     private cache: CacheService,
-    private router: Router,
+    private router: Router
   ) { }
 
   Identificador: string = '';
@@ -38,7 +40,6 @@ export class RegisterComponent {
   loading: boolean = false;
   form2Habilitado: boolean = false;
 
-
   register_object: register_interface = {
     identificador: '',
     contraseña: '',
@@ -54,8 +55,6 @@ export class RegisterComponent {
   activarForm2(event: any): void {
     this.form2Habilitado = event.target.checked;
   }
-
-
 
   actualizarIdentificador(event: Event): void {
     this.Identificador = (event.target as HTMLInputElement).value;
@@ -113,6 +112,23 @@ export class RegisterComponent {
     return regex.test(fechaVencimiento);
   }
 
+  private validarEdad(edad: string): boolean {
+    const regex = /^(1[89]|[2-9][0-9]|1[01][0-9]|120)$/; // Rango de 18 a 120 años
+    return regex.test(edad);
+  }
+
+  private validarCorreoElectronico(correo: string): boolean {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(correo);
+  }
+
+  private validarContrasena(contrasena: string): boolean {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
+    return regex.test(contrasena);
+  }
+  
+  
+
   almacenarDatos() {
     this.register_object.identificador = this.Identificador;
     this.register_object.contraseña = this.Contrasena;
@@ -146,46 +162,93 @@ export class RegisterComponent {
         this.loading = false;
         return;
       }
+
       if (!this.validarFechaVencimiento(this.FechaVencimiento)) {
         alert('Fecha de vencimiento inválida. Formato MM-YY.');
         this.loading = false;
         return;
       }
+
     }
 
     if (!this.TarjetaTitular || !this.TarjetaDireccion || !this.NumeroTarjeta || !this.FechaVencimiento) {
       const confirmacion = window.confirm('¿Desea dejar los campos de la tarjeta vacíos?');
       if (confirmacion) {
-        // this.continuarRegistro();
+        try {
 
+          if (!this.validarEdad(this.Edad.toString())) {
+            alert('Edad inválida. Debe ser mayor o igual a 18 años y menor o igual a 120 años.');
+            this.loading = false;
+            return;
+          }
+
+          if (!this.validarCorreoElectronico(this.Identificador)) {
+            alert('Correo electrónico inválido.');
+            this.loading = false;
+            return;
+          }
+
+          if(!this.validarContrasena(this.Contrasena)) {
+            alert('Contraseña inválida. Debe tener entre 8 y 20 caracteres, al menos una letra minúscula, una letra mayúscula y un número.');
+            this.loading = false;
+            return;
+          }
+
+          await this.almacenarDatos();
+          let a = await this.registerservice
+            .register(this.register_object.identificador, this.register_object.contraseña, this.register_object.usuario_Nombre, this.register_object.usuario_Apellidos, this.register_object.usuario_Edad, this.register_object.usuario_Tarjeta_Titular, this.register_object.usuario_Tarjeta_Direccion, this.register_object.usuario_Tarjeta_Numero_Tarjeta, this.register_object.usuario_Tarjeta_Fecha_Vencimiento)
+            .toPromise();
+          this.router.navigate(['/code']);
+          console.log(a);
+          this.cache.guardarDatoLocal('cuenta', this.register_object.identificador);
+        } catch (error) {
+          this.mostrarError(error);
+        } finally {
+          this.loading = false;
+        }
+      } else {
+        this.loading = false;
+      }
+    } else {
+      try {
         await this.almacenarDatos();
         let a = await this.registerservice
           .register(this.register_object.identificador, this.register_object.contraseña, this.register_object.usuario_Nombre, this.register_object.usuario_Apellidos, this.register_object.usuario_Edad, this.register_object.usuario_Tarjeta_Titular, this.register_object.usuario_Tarjeta_Direccion, this.register_object.usuario_Tarjeta_Numero_Tarjeta, this.register_object.usuario_Tarjeta_Fecha_Vencimiento)
           .toPromise();
-        this.router.navigate(['/code'])
+        this.router.navigate(['/code']);
         console.log(a);
         this.cache.guardarDatoLocal('cuenta', this.register_object.identificador);
-
+      } catch (error) {
+        this.mostrarError(error);
+      } finally {
+        this.loading = false;
       }
-
-      this.loading = false;
-
-    } else {
-      // this.continuarRegistro();
-
-      await this.almacenarDatos();
-      let a = await this.registerservice
-        .register(this.register_object.identificador, this.register_object.contraseña, this.register_object.usuario_Nombre, this.register_object.usuario_Apellidos, this.register_object.usuario_Edad, this.register_object.usuario_Tarjeta_Titular, this.register_object.usuario_Tarjeta_Direccion, this.register_object.usuario_Tarjeta_Numero_Tarjeta, this.register_object.usuario_Tarjeta_Fecha_Vencimiento)
-        .toPromise();
-      this.router.navigate(['/code'])
-      console.log(a);
-      this.cache.guardarDatoLocal('cuenta', this.register_object.identificador);
-
-      this.loading = false;
-
-
     }
-
   }
 
+  private mostrarError(error: any) {
+    let errorMessage = 'Unknown error!';
+    if (error instanceof HttpErrorResponse) {
+      // Error del lado del cliente o de red
+      if (error.error instanceof ErrorEvent) {
+        errorMessage = `Error: ${error.error.message}\nDetails: ${JSON.stringify(error.error.message)}`;
+      } else {
+        // Error del lado del servidor
+        if (error.error && typeof error.error === 'object') {
+          // errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}\nDetails: ${JSON.stringify(error.error)}`;
+          errorMessage = `Error Code: ${error.status}\nDetails: ${JSON.stringify(error.error.message)}`;
+        } else {
+          errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}\nDetails: ${JSON.stringify(error.error.message)}`;
+        }
+      }
+    } else if (typeof error === 'string') {
+      errorMessage = error;
+    } else if (error instanceof Error) {
+      errorMessage = error.message;
+    } else {
+      errorMessage = JSON.stringify(error);
+    }
+    alert(errorMessage);
+  }
+  
 }

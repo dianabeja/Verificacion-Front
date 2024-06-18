@@ -9,4 +9,11 @@ import { vuelo } from 'src/app/models/tarjetaVuelo.model';
 })
 export class VuelodetallesComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: vuelo) {}
+
+  reservarVuelo(viajeID: number) {
+    localStorage.setItem('origen', this.data.origen);
+    localStorage.setItem('destino', this.data.destino);
+    localStorage.setItem('viajeID', viajeID.toString());
+    window.location.href = '/reserve';
+  }
 }
