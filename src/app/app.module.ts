@@ -14,7 +14,7 @@ import { CodigoverificacionComponent } from './view/codigoverificacion/codigover
 import { NuevacontrasenaComponent } from './view/nuevacontrasena/nuevacontrasena.component';
 import { RegisterComponent } from './view/register/register.component';
 import { ActivarCuentaComponent } from './view/code/code.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Importa BrowserAnimationsModule
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCcAmex, faCcMastercard, faCcPaypal, faCcVisa, faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -39,7 +39,7 @@ import { PassengerFormComponent } from './view/passenger-form/passenger-form.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     CommonModule,
     FontAwesomeModule,
     FormsModule,
@@ -55,7 +55,6 @@ import { PassengerFormComponent } from './view/passenger-form/passenger-form.com
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
-    // Añadir los iconos a la biblioteca
     library.addIcons(faFacebookF, faTwitter, faInstagram, faCcVisa, faCcMastercard, faCcAmex, faCcPaypal);
   }
- }
+}
